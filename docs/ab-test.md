@@ -28,7 +28,7 @@ count.
 | Metric | WITH brain | WITHOUT brain |
 |---|---|---|
 | Correct answers | **3 / 3** | **0 / 3** |
-| Content read | 26,600 chars ≈ **6,650 tokens** | 122,280 chars ≈ **30,570 tokens** (4.4×) |
+| Content read | 26,600 chars ≈ **6,650 tokens** | 122,280 chars ≈ **30,570 tokens** (4.6×) |
 | Tool calls | **10** | **~100** |
 
 ### WITH brain — trajectory

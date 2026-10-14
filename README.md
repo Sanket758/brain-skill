@@ -51,7 +51,7 @@ a benchmark; token counts are chars ÷ 4. Full method + caveats: [`docs/ab-test.
 | | WITH brain | WITHOUT brain |
 |---|---|---|
 | Correct answers | **3 / 3** | **0 / 3** |
-| Content read | ≈ 6,650 tokens | ≈ 30,570 tokens (**4.4×**) |
+| Content read | ≈ 6,650 tokens | ≈ 30,570 tokens (**4.6×**) |
 | Tool calls | **10** | **~100** |
 
 The 0/3 is by construction — but *proving* the answers weren't in the repo is the expensive
