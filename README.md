@@ -43,7 +43,10 @@ actual missing piece is simpler — **an agreement about what to remember and wh
 
 ### A/B test: same repo, same 3 questions, with vs. without the vault
 
-Two agents, ground truth verified to exist *only* in the vault:
+Two agents, ground truth verified to exist *only* in the vault (grep-verified against the
+working tree and git history). The without-memory agent was told the vault was off-limits
+and to answer "not found" rather than guess. One run per condition — a demonstration, not
+a benchmark; token counts are chars ÷ 4. Full method + caveats: [`docs/ab-test.md`](docs/ab-test.md).
 
 | | WITH brain | WITHOUT brain |
 |---|---|---|
@@ -51,9 +54,11 @@ Two agents, ground truth verified to exist *only* in the vault:
 | Content read | ≈ 6,650 tokens | ≈ 30,570 tokens (**4.4×**) |
 | Tool calls | **10** | **~100** |
 
-The agent without memory grepped the entire working tree, streamed all 10,045 git objects,
-and dumped the codegraph index — and still couldn't recover the answers, because decisions
-and their rationale were never in the repo. It wasn't slow; it was *impossible*.
+The 0/3 is by construction — but *proving* the answers weren't in the repo is the expensive
+part: the agent without memory grepped the entire working tree, streamed all 10,045 git
+objects, and queried the code index (~100 calls to establish absence). The with-memory agent
+recalled all three answers from 6 small notes in 10 calls. Decisions and their rationale
+were never in the repo — repo + git are not a memory store for *why*.
 
 ### Session-cache benchmark (Bar-A, 2026-08-08)
 
@@ -69,11 +74,20 @@ The session-context cache layer was benchmarked with the bundled
 | Bootstrap cost < savings | bootstrap < saved | 454 tok vs 10,095 tok saved (22×) | PASS |
 | Non-breaking | additive-only | PASS |
 
-Reproduce with the bundled fixture:
+Reproduce everything from the raw transcripts shipped in
+[`brain/tools/fixtures/`](brain/tools/fixtures/README-fixtures.md):
 
 ```bash
+# the "without cache" control shape → ratio 2.00, FAIL
 python3 brain/tools/measure-redundant-reads.py brain/tools/fixtures/sample-transcript.jsonl
-# → redundant_read_ratio=2.00, verdict: FAIL  (the "without" shape)
+
+# the real benchmark → 43.19% savings, PASS
+python3 brain/tools/measure-redundant-reads.py \
+  brain/tools/fixtures/bar-after.jsonl brain/tools/fixtures/bar-baseline.txt
+
+# the A/B transcripts → 6,650 vs 30,570 tokens read
+python3 brain/tools/measure-redundant-reads.py brain/tools/fixtures/ab-with.jsonl
+python3 brain/tools/measure-redundant-reads.py brain/tools/fixtures/ab-without.jsonl
 ```
 
 ## Vault layout
@@ -141,8 +155,9 @@ brain/
 ├── reference/templates/        # 19 templates: one per note type + hot.md, index, session-summary
 └── tools/
     ├── measure-redundant-reads.py   # stdlib-only metrics script (also uv-run friendly)
-    └── fixtures/sample-transcript.jsonl
+    └── fixtures/                # raw transcripts: A/B pair + benchmark + control (+ README)
 bin/brain-init                  # one-command project bootstrap
+docs/ab-test.md                 # A/B methodology, results, caveats
 examples/                       # a sample decision note + hot.md
 ```
 
