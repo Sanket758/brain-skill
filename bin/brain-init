@@ -1,0 +1,157 @@
+#!/usr/bin/env bash
+# brain-init: bootstrap an OpenCode project for second-brain vault integration.
+#
+# Creates ~/ObsidianVault/<project>/{decisions,findings} + hot.md and symlinks
+# it to <project-dir>/docs/brain. Idempotent: safe to re-run, no-op if linked.
+#
+# Usage:
+#   brain-init                    # bootstrap cwd
+#   brain-init /path/to/project   # bootstrap a specific project
+#   brain-init --name customname  # override the vault subfolder name (otherwise derived from absolute path)
+#
+# Project name derivation: takes the absolute path, strips leading / and home
+# prefix, replaces / with _ so /home/youruser/Tools/experiments becomes
+# Tools_experiments. Unique per project path — collision-free across projects
+# that happen to share a basename (e.g. two projects both called "app").
+#
+# After running, any AI agent working in <project-dir> with native file tools
+# sees ./docs/brain/ as a per-project second-brain vault.
+# Verify with: ls -la <project-dir>/docs/brain && cat <project-dir>/docs/brain/hot.md
+
+set -euo pipefail
+
+VAULT_ROOT="${OBSIDIAN_VAULT_ROOT:-$HOME/ObsidianVault}"
+PROJECT_DIR=""
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --name)
+            PROJECT_NAME="$2"
+            shift 2
+            ;;
+        --help|-h)
+            sed -n '2,30p' "$0"
+            exit 0
+            ;;
+        *)
+            PROJECT_DIR="$1"
+            shift
+            ;;
+    esac
+done
+
+[[ -z "$PROJECT_DIR" ]] && PROJECT_DIR="$PWD"
+PROJECT_DIR="$(cd "$PROJECT_DIR" && pwd)"
+
+if [[ -z "${PROJECT_NAME:-}" ]]; then
+    home_prefix="$HOME/"
+    if [[ "$PROJECT_DIR" == "$HOME" ]]; then
+        PROJECT_NAME="home"
+    elif [[ "$PROJECT_DIR" == "$HOME/"* ]]; then
+        PROJECT_NAME="${PROJECT_DIR#$home_prefix}"
+    else
+        PROJECT_NAME="${PROJECT_DIR#/}"
+    fi
+    PROJECT_NAME="${PROJECT_NAME//\//_}"
+fi
+
+PROJECT_VAULT="$VAULT_ROOT/$PROJECT_NAME"
+BRAIN_LINK="$PROJECT_DIR/docs/brain"
+
+echo "brain-init: bootstrapping second-brain vault for project"
+echo "  project dir : $PROJECT_DIR"
+echo "  vault root  : $VAULT_ROOT"
+echo "  project name: $PROJECT_NAME"
+echo "  vault path  : $PROJECT_VAULT"
+echo "  symlink     : $BRAIN_LINK -> $PROJECT_VAULT"
+echo
+
+# 1. Vault root exists? (shared/ and sessions/ created alongside)
+mkdir -p "$VAULT_ROOT/shared"
+mkdir -p "$VAULT_ROOT/sessions"
+mkdir -p "$PROJECT_VAULT/decisions"
+mkdir -p "$PROJECT_VAULT/findings"
+mkdir -p "$PROJECT_VAULT/thinking"
+
+# Create sessions INDEX.md if missing
+if [[ ! -f "$VAULT_ROOT/sessions/INDEX.md" ]]; then
+    TODAY="$(date +%Y-%m-%d)"
+    cat > "$VAULT_ROOT/sessions/INDEX.md" <<'EOF'
+# Session Index
+
+Last updated: <date>
+
+## Recent Sessions (newest first)
+| Session ID | Date | Project | Summary | Tags |
+|------------|------|---------|---------|------|
+
+## By Project
+*Sessions will be organized by project as they are indexed.*
+
+## By Topic
+*Sessions will be organized by topic as they are indexed.*
+EOF
+    # Replace <date> with actual date
+    sed -i "s/<date>/$TODAY/" "$VAULT_ROOT/sessions/INDEX.md"
+    echo "  created sessions/INDEX.md"
+else
+    echo "  sessions/INDEX.md already exists (kept)"
+fi
+
+# 2. Seed hot.md if missing
+if [[ ! -f "$PROJECT_VAULT/hot.md" ]]; then
+    TODAY="$(date +%Y-%m-%d)"
+    SLUG_NAME="$(basename "$PROJECT_DIR")"
+    cat > "$PROJECT_VAULT/hot.md" <<EOF
+# Hot state — $PROJECT_NAME
+
+Last updated: $TODAY
+
+## Current focus
+Not yet started — initialized by brain-init.
+
+## Recent decisions
+- (none yet)
+
+## Open questions
+- (none yet)
+
+## Log
+- $TODAY $(date +%H:%M) — Vault initialized by brain-init.sh
+EOF
+    echo "  created hot.md"
+else
+    echo "  hot.md already exists (kept)"
+fi
+
+# 3. Create symlink (idempotent, supports re-linking to same target)
+mkdir -p "$PROJECT_DIR/docs"
+if [[ -L "$BRAIN_LINK" ]]; then
+    EXISTING_TARGET="$(readlink -f "$BRAIN_LINK" 2>/dev/null || true)"
+    if [[ "$EXISTING_TARGET" == "$PROJECT_VAULT" ]]; then
+        echo "  symlink already correct (no-op)"
+    else
+        echo "  WARNING: $BRAIN_LINK points to $EXISTING_TARGET, not $PROJECT_VAULT"
+        echo "  Re-linking. Old target: $EXISTING_TARGET"
+        rm "$BRAIN_LINK"
+        ln -sfn "$PROJECT_VAULT" "$BRAIN_LINK"
+        echo "  re-linked"
+    fi
+elif [[ -e "$BRAIN_LINK" ]]; then
+    echo "  ERROR: $BRAIN_LINK exists but is not a symlink. Refusing to overwrite."
+    echo "  Remove or move it aside manually, then re-run."
+    exit 1
+else
+    ln -sfn "$PROJECT_VAULT" "$BRAIN_LINK"
+    echo "  symlink created"
+fi
+
+echo
+echo "Done. Brain vault linked at: $BRAIN_LINK"
+echo
+echo "Verify with:"
+echo "  ls -la \"$BRAIN_LINK\""
+echo "  cat \"$BRAIN_LINK/hot.md\""
+echo
+echo "To add this vault to the Obsidian GUI app for browsing:"
+echo "  Open Obsidian -> 'Open folder as vault' -> select $VAULT_ROOT"
