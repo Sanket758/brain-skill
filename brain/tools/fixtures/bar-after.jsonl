@@ -1,0 +1,12 @@
+{"ts": "2026-08-08T14:20:11Z", "agent": "main", "path": "/home/youruser/Projects/my-project/templates/writing-style-guide.md", "chars": 8294}
+{"ts": "2026-08-08T14:20:34Z", "agent": "main", "path": "/home/youruser/Projects/my-project/scripts/generate-pdf.mjs", "chars": 16649}
+{"ts": "2026-08-08T14:21:02Z", "agent": "main", "path": "/home/youruser/Projects/my-project/modes/pdf.md", "chars": 11194}
+{"ts": "2026-08-08T14:21:40Z", "agent": "main", "path": "/home/youruser/Projects/my-project/cv.md", "chars": 7587}
+{"ts": "2026-08-08T14:22:15Z", "agent": "main", "path": "/home/youruser/Projects/my-project/output/cover-letter-cohere-2026-08-08.md", "chars": 3014}
+{"ts": "2026-08-08T14:22:19Z", "kind": "cache_write", "chars": 1622}
+{"ts": "2026-08-08T14:22:45Z", "agent": "main", "path": "/home/youruser/Projects/my-project/docs/brain/session-context.md", "chars": 1622}
+{"ts": "2026-08-08T14:23:10Z", "agent": "main", "path": "/home/youruser/ObsidianVault/my-project/hot.md", "chars": 640}
+{"ts": "2026-08-08T14:23:32Z", "agent": "main", "path": "/home/youruser/ObsidianVault/shared/decisions/user-preferences.md", "chars": 2480}
+{"ts": "2026-08-08T14:29:50Z", "kind": "subagent_prompt", "text": "Before reading any shared context files, read `./docs/brain/session-context.md` if present; use cached summaries instead of re-reading unchanged files; never write to it — report findings to the main agent. Generate the Cohere cover letter: follow the pdf mode pipeline, use the cached summaries of cv.md and writing-style-guide.md (verify mtime+size against the cache rows), and report findings back."}
+{"ts": "2026-08-08T14:30:05Z", "agent": "sub", "path": "/home/youruser/Projects/my-project/docs/brain/session-context.md", "chars": 1622}
+{"ts": "2026-08-08T14:30:11Z", "kind": "cache_write", "chars": 196}

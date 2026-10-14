@@ -1,0 +1,2 @@
+# 2-pass uncached baseline for bar-after.jsonl (5-file set: 2 x 11,685 tokens)
+uncached_tokens=23370

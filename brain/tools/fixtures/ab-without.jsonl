@@ -1,0 +1,52 @@
+{"ts": "2026-10-14T11:00:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/ls -la root", "chars": 1600}
+{"ts": "2026-10-14T11:01:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/glob **/*", "chars": 8000}
+{"ts": "2026-10-14T11:02:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/.gitignore", "chars": 1500}
+{"ts": "2026-10-14T11:03:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/portals.yml", "chars": 3000}
+{"ts": "2026-10-14T11:04:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/templates/portals.example.yml", "chars": 300}
+{"ts": "2026-10-14T11:05:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/modes/scan.md", "chars": 7000}
+{"ts": "2026-10-14T11:06:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/docs/PLAN.md", "chars": 6500}
+{"ts": "2026-10-14T11:07:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/scripts/scan.mjs", "chars": 2300}
+{"ts": "2026-10-14T11:08:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/data/scan-history.tsv", "chars": 1200}
+{"ts": "2026-10-14T11:09:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/data/pipeline.md", "chars": 400}
+{"ts": "2026-10-14T11:10:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/scripts/career_ops_cli.py", "chars": 4000}
+{"ts": "2026-10-14T11:11:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/career-ops", "chars": 650}
+{"ts": "2026-10-14T11:12:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/AGENTS.md", "chars": 6900}
+{"ts": "2026-10-14T11:13:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/GEMINI.md", "chars": 2300}
+{"ts": "2026-10-14T11:14:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/CLAUDE.md", "chars": 1700}
+{"ts": "2026-10-14T11:15:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/README.md", "chars": 700}
+{"ts": "2026-10-14T11:16:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/opencode.json", "chars": 230}
+{"ts": "2026-10-14T11:17:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/.opencode/agents/dashboard-qa.md", "chars": 700}
+{"ts": "2026-10-14T11:18:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/.opencode/skills/dashboard-qa/SKILL.md", "chars": 300}
+{"ts": "2026-10-14T11:19:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/.gemini/settings.json", "chars": 200}
+{"ts": "2026-10-14T11:20:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/gmail_agent/config.py", "chars": 3200}
+{"ts": "2026-10-14T11:21:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/gmail_agent/*.py greps", "chars": 3500}
+{"ts": "2026-10-14T11:22:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/tests/test_config.py", "chars": 400}
+{"ts": "2026-10-14T11:23:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/agentscope_delegate.py", "chars": 600}
+{"ts": "2026-10-14T11:24:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/scripts/generate-tailored-cvs.py", "chars": 3000}
+{"ts": "2026-10-14T11:25:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/scripts/tailor_resume.py", "chars": 2200}
+{"ts": "2026-10-14T11:26:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/batch/batch-runner.sh", "chars": 150}
+{"ts": "2026-10-14T11:27:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/batch/batch-prompt.md", "chars": 150}
+{"ts": "2026-10-14T11:28:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/modes/pipeline.md", "chars": 3000}
+{"ts": "2026-10-14T11:29:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/modes/*.md greps", "chars": 1500}
+{"ts": "2026-10-14T11:30:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/.claude/skills/career-ops/SKILL.md", "chars": 500}
+{"ts": "2026-10-14T11:31:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/dashboard api.ts", "chars": 800}
+{"ts": "2026-10-14T11:32:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/REFORM_ANALYSIS.md", "chars": 100}
+{"ts": "2026-10-14T11:33:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/data/local-agent-evidence-inventory.md", "chars": 1500}
+{"ts": "2026-10-14T11:34:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/output/resumes/*.txt", "chars": 400}
+{"ts": "2026-10-14T11:35:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/data/applications.md", "chars": 5500}
+{"ts": "2026-10-14T11:36:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/data/applications.md.bak", "chars": 600}
+{"ts": "2026-10-14T11:37:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/batch/tracker-additions", "chars": 600}
+{"ts": "2026-10-14T11:38:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/data/recruiters.md + batch log", "chars": 600}
+{"ts": "2026-10-14T11:39:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/reports/*.md", "chars": 800}
+{"ts": "2026-10-14T11:40:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/integrations/ + count_rejections", "chars": 300}
+{"ts": "2026-10-14T11:41:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/.omo/notepads", "chars": 4700}
+{"ts": "2026-10-14T11:42:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/.gauntlet", "chars": 1800}
+{"ts": "2026-10-14T11:43:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/skill-observations/log.md + DIR_INDEX", "chars": 3350}
+{"ts": "2026-10-14T11:44:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/docs/ARCHITECTURE.md", "chars": 50}
+{"ts": "2026-10-14T11:45:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/jds/selected", "chars": 400}
+{"ts": "2026-10-14T11:46:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/default.tar.gz contents", "chars": 2800}
+{"ts": "2026-10-14T11:47:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/.codegraph dumps", "chars": 12000}
+{"ts": "2026-10-14T11:48:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/codegraph logs", "chars": 1300}
+{"ts": "2026-10-14T11:49:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/git objects", "chars": 8000}
+{"ts": "2026-10-14T11:50:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/dir listings + find", "chars": 5000}
+{"ts": "2026-10-14T11:51:00Z", "agent": "main", "path": "/home/youruser/Projects/my-project/no-match greps", "chars": 4000}

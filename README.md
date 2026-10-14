@@ -48,7 +48,7 @@ Two agents, ground truth verified to exist *only* in the vault:
 | | WITH brain | WITHOUT brain |
 |---|---|---|
 | Correct answers | **3 / 3** | **0 / 3** |
-| Content read | ≈ 6,950 tokens | ≈ 30,570 tokens (**4.4×**) |
+| Content read | ≈ 6,650 tokens | ≈ 30,570 tokens (**4.4×**) |
 | Tool calls | **10** | **~100** |
 
 The agent without memory grepped the entire working tree, streamed all 10,045 git objects,
